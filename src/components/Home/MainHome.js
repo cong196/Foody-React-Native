@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity
+    View, Text, TouchableOpacity,StyleSheet
 } from 'react-native';
-
+import HeaderHome from './HeaderHome'
 
 export default class MainHome extends Component {
     render() {
 
         const { navigate } = this.props.navigation;
-
+         
         return (
             <View>
-                <Text>Main components</Text>
+                <HeaderHome />
                 <TouchableOpacity
                     onPress={() => {navigate('DoiTinh')} }
                 >
