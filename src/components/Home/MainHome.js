@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 
-export default class Main extends Component {
+export default class MainHome extends Component {
     render() {
 
         const { navigate } = this.props.navigation;
@@ -13,7 +13,7 @@ export default class Main extends Component {
             <View>
                 <Text>Main components</Text>
                 <TouchableOpacity
-                    onPress={() => {navigate('Mh_DoiTinh')} }
+                    onPress={() => {navigate('DoiTinh')} }
                 >
                     <Text>go Doi Tinh Thanh </Text>
                 </TouchableOpacity>
