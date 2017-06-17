@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, Button, Image, StyleSheet,TouchableOpacity
+    View, Text, Button, Image, StyleSheet, TouchableOpacity
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import MainHome from './Home/MainHome';
@@ -51,7 +51,7 @@ export const TaiKhoanStack = StackNavigator({
 export const Tabbar = TabNavigator(
     {
         TabHome: {
-            screen: HomeStack,
+            screen: MainHome,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -59,10 +59,11 @@ export const Tabbar = TabNavigator(
                         style={[styles.icon, { tintColor: tintColor }]}
                     />
                 ),
+                header: null,
             }
         },
         TabBST: {
-            screen: BSTStack,
+            screen: BoSuuTap,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -73,7 +74,7 @@ export const Tabbar = TabNavigator(
             }
         },
         TabTimKiem: {
-            screen: TimKiemStack,
+            screen: TimKiem,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -84,7 +85,7 @@ export const Tabbar = TabNavigator(
             }
         },
         TabTaiKhoan: {
-            screen: TaiKhoanStack,
+            screen: TaiKhoan,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <Image
@@ -96,8 +97,12 @@ export const Tabbar = TabNavigator(
         }
     },
     {
-        tabBarPosition: 'bottom',
         swipeEnabled: false,
+        animationEnabled: false,
+        lazyLoad:true,
+        scrollEnabled: true,
+        tabBarPosition: 'bottom',
+       
         tabBarOptions: {
             showLabel: false,
             showIcon: true,

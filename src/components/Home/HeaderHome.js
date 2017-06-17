@@ -26,6 +26,10 @@ export default class HeaderHome extends Component {
             angi: true
         })
     }
+
+    doiTinhThanh() {
+        
+    }
     render() {
         const { header, icon, iconF, OdauActive, Odau, Angi, AngiActive } = style;
         return (
@@ -55,9 +59,11 @@ export default class HeaderHome extends Component {
                     </TouchableWithoutFeedback>
                 </View>
 
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    onPress={() => { this.doiTinhThanh() }}
+                >
                     <View style={[iconF, { paddingRight: 10 }]}>
-                        <Text style={{ color: 'white' }}>+</Text>
+                        <Text style={{ color: 'white', fontSize: 17 }}>+</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </View >
