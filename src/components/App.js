@@ -14,7 +14,7 @@ export default class App extends Component {
                 return <Main navigator={navigator} />
 
             case 'doitinh':
-                return <DoiTinhThanh />
+                return <DoiTinhThanh navigator={navigator}/>
         }
     }
     render() {

@@ -28,7 +28,7 @@ export default class Main extends Component {
                     renderIcon={() => <Image style = { icon } source={require('../img/home.png')} />}
                     renderSelectedIcon={() => <Image style = { icon } source={require('../img/home_active.png')} />}
                     onPress={() => this.setState({ selectedTab: 'home' })}>
-                    <MainHome />
+                    <MainHome doitinh = {this.doiTinh.bind(this)}/>
                 </TabNavigator.Item>
 
                 <TabNavigator.Item

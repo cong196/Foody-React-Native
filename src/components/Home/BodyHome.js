@@ -1,23 +1,50 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity, StyleSheet, Image, Dimensions
+    View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, Alert
 } from 'react-native';
 
 import MainViewTabODau from './TabOdau/MainViewTabODau';
 import MainViewTabAnGi from './TabAnGi/MainViewTabAnGi';
 
-import { PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator } from 'rn-viewpager';
-
+import { IndicatorViewPager } from 'rn-viewpager';
+import global from '../global';
 const { height } = Dimensions.get('window');
 export default class BodyHome extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            index: 1
-        }
+            index: 0
+        };
+        global.setPage = this.setPage.bind(this);
     }
 
+    setPage(index) {
+        if (this.state.index !== index)
+            this.viewPager.setPage(index);
+    }
+
+    changeIndex() {
+        let { index } = this.state;
+        if (index === 0) {
+            this.setState({ index: 1 })
+        } else {
+            this.setState({ index: 0 })
+        }
+    }
+    pageChange() {
+        this.changeIndex();
+        if (this.state.index === 1) {
+            Alert.alert(
+                'Ở đâu !!',
+            )
+        } else {
+            Alert.alert(
+                'Ăn gì !!',
+            )
+        }
+        global.setButtonOdauAngi(this.state.index);
+    }
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -25,25 +52,16 @@ export default class BodyHome extends Component {
                     style={{ height: height - 40 }}
                     ref={(viewPager) => { this.viewPager = viewPager; }}
                     initialPage={0}
+                    onPageSelected={() => { this.pageChange() }}
                 >
                     <View style={{ backgroundColor: 'cadetblue' }}>
-                        <MainViewTabODau />
+                        <MainViewTabODau doitinh={this.props.doitinh} />
                     </View>
                     <View style={{ backgroundColor: 'cornflowerblue' }}>
-                        <MainViewTabAnGi />
+                        <MainViewTabAnGi doitinh={this.props.doitinh} />
                     </View>
-                    <View>
-                        <TouchableOpacity
-                            onPress={() => {
-                                this.viewPager.setPage(1);
-                            }}
-                        >
-                            <Text>Chaneg</Text>
-                        </TouchableOpacity>
-                    </View>
-                </IndicatorViewPager>
 
-               
+                </IndicatorViewPager>
             </View>
         );
     }
@@ -52,22 +70,3 @@ export default class BodyHome extends Component {
 var styles = StyleSheet.create({
 
 })
-
-/*
-<Swiper
-                    removeClippedSubviews={false}
-                    style={styles.wrapper}
-                    showsButtons={false}
-                    loop={false}
-                    dot={<View style={{ backgroundColor: 'rgba(0,0,0,0)' }} />}
-                    activeDot={<View style={{ backgroundColor: 'rgba(0,0,0,0)' }} />}
-                >
-                    <View style={styles.slide2}>
-                        <Text style={styles.text}>Beautiful</Text>
-                    </View>
-                    <View style={styles.slide3}>
-                        <Text style={styles.text}>And simple</Text>
-                    </View>
-                </Swiper>
-
-                */

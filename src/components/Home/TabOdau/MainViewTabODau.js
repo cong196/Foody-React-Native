@@ -1,32 +1,23 @@
-import React , {Component} from 'react';
+import React, { Component } from 'react';
 import {
-    View,Text,TouchableOpacity
+    View, Text, TouchableOpacity
 } from 'react-native';
 
 export default class MainViewTabODau extends Component {
-    render(){
-        return(
-            <View style = {{backgroundColor:'red'}}>
+    doitinh() {
+        const { doitinh } = this.props;
+        doitinh();
+    }
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
                 <Text> Main View Tab Ở đâu</Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress = {()=>{this.doitinh()}}
+                >
                     <Text>Đổi tỉnh thành</Text>
                 </TouchableOpacity>
-                <Text> Main View Tab Ở đâu</Text>
-                <TouchableOpacity>
-                    <Text>Đổi tỉnh thành</Text>
-                </TouchableOpacity>
-                <Text> Main View Tab Ở đâu</Text>
-                <TouchableOpacity>
-                    <Text>Đổi tỉnh thành</Text>
-                </TouchableOpacity>
-                <Text> Main View Tab Ở đâu</Text>
-                <TouchableOpacity>
-                    <Text>Đổi tỉnh thành</Text>
-                </TouchableOpacity>
-                <Text> Main View Tab Ở đâu</Text>
-                <TouchableOpacity>
-                    <Text>Đổi tỉnh thành</Text>
-                </TouchableOpacity>
+
             </View>
         );
     }

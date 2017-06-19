@@ -3,7 +3,7 @@ import {
     View, Text, TouchableOpacity, StyleSheet, Image, TouchableWithoutFeedback,
     Alert
 } from 'react-native';
-
+import global from '../global';
 export default class HeaderHome extends Component {
 
     constructor(props) {
@@ -11,25 +11,40 @@ export default class HeaderHome extends Component {
         this.state = {
             odau: true,
             angi: false
+        };
+        global.setButtonOdauAngi = this.setButton.bind(this);
+    }
+
+    setButton(index) {
+        if (index === 1) {
+            this.setState({
+                odau: true,
+                angi: false
+            });
+        }
+        else {
+            this.setState({
+                odau: false,
+                angi: true
+            });
         }
     }
     clickOdau() {
         this.setState({
             odau: true,
             angi: false
-        })
+        });
+        global.setPage(0);
     }
 
     clickAngi() {
         this.setState({
             odau: false,
             angi: true
-        })
+        });
+        global.setPage(1);
     }
 
-    doiTinhThanh() {
-        
-    }
     render() {
         const { header, icon, iconF, OdauActive, Odau, Angi, AngiActive } = style;
         return (
@@ -60,7 +75,7 @@ export default class HeaderHome extends Component {
                 </View>
 
                 <TouchableWithoutFeedback
-                    onPress={() => { this.doiTinhThanh() }}
+
                 >
                     <View style={[iconF, { paddingRight: 10 }]}>
                         <Text style={{ color: 'white', fontSize: 17 }}>+</Text>

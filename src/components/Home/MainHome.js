@@ -13,7 +13,7 @@ export default class MainHome extends Component {
         return (
             <View>
                 <HeaderHome />
-                <BodyHome />
+                <BodyHome doitinh = {this.props.doitinh}/>
             </View>
         );
     }
