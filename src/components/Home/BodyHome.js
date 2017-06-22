@@ -16,14 +16,16 @@ export default class BodyHome extends Component {
         this.state = {
             index: 0
         };
-        global.setPage = this.setPage.bind(this);
+        global.setPage = this.setPage.bind(this); // Gán biến setPage trong global là hàm đổi Page 
     }
 
+    // Thay sự kiện thay đổi trang cho 2 button ăn gì ở đâu..Gọi thông qua biến setPage trong global.js
     setPage(index) {
         if (this.state.index !== index)
             this.viewPager.setPage(index);
     }
 
+    // 1 sẽ là ở đâu.. 0 sẽ là ăn gì !!
     changeIndex() {
         let { index } = this.state;
         if (index === 0) {
@@ -35,13 +37,9 @@ export default class BodyHome extends Component {
     pageChange() {
         this.changeIndex();
         if (this.state.index === 1) {
-            Alert.alert(
-                'Ở đâu !!',
-            )
+            
         } else {
-            Alert.alert(
-                'Ăn gì !!',
-            )
+            
         }
         global.setButtonOdauAngi(this.state.index);
     }
@@ -54,8 +52,8 @@ export default class BodyHome extends Component {
                     initialPage={0}
                     onPageSelected={() => { this.pageChange() }}
                 >
-                    <View style={{ backgroundColor: 'cadetblue' }}>
-                        <MainViewTabODau doitinh={this.props.doitinh} />
+                    <View style={{ backgroundColor: 'cadetblue'}}>
+                        <MainViewTabODau doitinh={this.props.doitinh}/>
                     </View>
                     <View style={{ backgroundColor: 'cornflowerblue' }}>
                         <MainViewTabAnGi doitinh={this.props.doitinh} />

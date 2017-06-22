@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity
+    View, Text, TouchableOpacity, StyleSheet
 } from 'react-native';
 
 export default class MainViewTabAnGi extends Component {
@@ -12,9 +12,21 @@ export default class MainViewTabAnGi extends Component {
 
 
     render() {
+        var { container, bar } = style;
         return (
-            <View style={{ backgroundColor: 'green', flex: 1 }}>
-                <Text> Main View Tab Ăn Gì</Text>
+            <View style={container}>
+                <View style={bar}>
+                    <View>
+                        <Text>Mới nhất</Text>
+                    </View>
+                    <View>
+                        <Text>Danh mục</Text>
+                    </View>
+
+                    <View>
+                        <Text>TPHCM</Text>
+                    </View>
+                </View>
                 <TouchableOpacity
                     onPress={() => { this.doitinh() }}
                 >
@@ -25,3 +37,13 @@ export default class MainViewTabAnGi extends Component {
         );
     }
 }
+
+var style = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#e9ebee'
+    },
+    bar: {
+
+    }
+})
